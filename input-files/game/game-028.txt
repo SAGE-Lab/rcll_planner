@@ -1,0 +1,16 @@
+Order 1: C0 (BASE_RED||CAP_GREY) from 00:00 to 15:00 (@00:00 ~900s) D3
+Order 2: C0 (BASE_BLACK||CAP_BLACK) from 04:03 to 06:15 (@00:36 ~132s) D1
+Order 3: C0 (BASE_RED||CAP_BLACK) from 11:20 to 13:41 (@07:41 ~141s) D1
+Order 4: C0 (BASE_RED||CAP_GREY) from 12:00 to 15:00 (@08:11 ~180s) D3
+Order 5: C1 (BASE_BLACK|RING_GREEN|CAP_BLACK) from 10:11 to 11:55 (@02:25 ~104s) D3
+Order 6: C2 (BASE_BLACK|RING_GREEN RING_YELLOW|CAP_GREY) from 10:58 to 13:52 (@02:33 ~174s) D3
+Order 7: C3 (BASE_SILVER|RING_GREEN RING_YELLOW RING_ORANGE|CAP_BLACK) from 11:15 to 14:00 (@00:00 ~165s) D3
+Order 8: C0 (BASE_BLACK||CAP_BLACK) from 15:00 to 20:00 (@15:00 ~300s) D1
+Ring color RING_GREEN requires 2 additional bases
+Ring color RING_ORANGE requires 1 additional bases
+Ring color RING_YELLOW requires 0 additional bases
+Ring color RING_BLUE requires 0 additional bases
+RS C-RS1 has colors (RING_YELLOW RING_BLUE)
+RS M-RS1 has colors (RING_YELLOW RING_BLUE)
+RS C-RS2 has colors (RING_GREEN RING_ORANGE)
+RS M-RS2 has colors (RING_GREEN RING_ORANGE)
