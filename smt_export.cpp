@@ -123,20 +123,43 @@ int main(int argc, char* argv[])
 	// std::cout << "Create formulas --- Done" << std::endl;
 
 	// std::cout << "Export .smt file --- Start" << std::endl;
-	if(omt == 0) {
-		// std::cout << "formula_pure" << std::endl;
-		smt_planner.export_and_solve(formula_pure, 0, smt_file_pure, check_pure);
-		// std::cout << "formula_macro" << std::endl;
-		smt_planner.export_and_solve(formula_macro, 1, smt_file_macro, check_macro);
-		// std::cout << "formula_dep" << std::endl;
-		smt_planner.export_and_solve(formula_dep, 2, smt_file_dep, check_dep);
+	if(check_pure) {
+		if(omt == 0) {
+			// std::cout << "formula_pure" << std::endl;
+			smt_planner.export_and_solve(formula_pure, 0, smt_file_pure, check_pure);
+		} else {
+			// std::cout << "formula_pure" << std::endl;
+			smt_planner.export_and_optimize(formula_pure, "rew_", 0, smt_file_pure, check_pure);
+		}
+	} else if(check_macro) {
+		if(omt == 0) {
+			smt_planner.export_and_solve(formula_macro, 1, smt_file_macro, check_macro);
+		} else {
+			smt_planner.export_and_optimize(formula_macro, "rew_", 1, smt_file_macro, check_macro);
+		}
+	} else if(check_dep) {
+		if(omt == 0) {
+			smt_planner.export_and_solve(formula_dep, 2, smt_file_dep, check_dep);
+		} else {
+			smt_planner.export_and_optimize(formula_dep, "rew_", 2, smt_file_dep, check_dep);
+		}
 	} else {
-		// std::cout << "formula_pure" << std::endl;
-		smt_planner.export_and_optimize(formula_pure, "rew_", 0, smt_file_pure, check_pure);
-		// std::cout << "formula_macro" << std::endl;
-		smt_planner.export_and_optimize(formula_macro, "rew_", 1, smt_file_macro, check_macro);
-		// std::cout << "formula_dep" << std::endl;
-		smt_planner.export_and_optimize(formula_dep, "rew_", 2, smt_file_dep, check_dep);
+		// no checks, just export the formulas
+		if(omt == 0) {
+			// std::cout << "formula_pure" << std::endl;
+			smt_planner.export_and_solve(formula_pure, 0, smt_file_pure, check_pure);
+			// std::cout << "formula_macro" << std::endl;
+			smt_planner.export_and_solve(formula_macro, 1, smt_file_macro, check_macro);
+			// std::cout << "formula_dep" << std::endl;
+			smt_planner.export_and_solve(formula_dep, 2, smt_file_dep, check_dep);
+		} else {
+			// std::cout << "formula_pure" << std::endl;
+			smt_planner.export_and_optimize(formula_pure, "rew_", 0, smt_file_pure, check_pure);
+			// std::cout << "formula_macro" << std::endl;
+			smt_planner.export_and_optimize(formula_macro, "rew_", 1, smt_file_macro, check_macro);
+			// std::cout << "formula_dep" << std::endl;
+			smt_planner.export_and_optimize(formula_dep, "rew_", 2, smt_file_dep, check_dep);
+		}
 	}
 	// std::cout << "Export .smt file --- Done" << std::endl << std::endl;
 }
