@@ -114,16 +114,16 @@ int main(int argc, char* argv[])
 	// std::cout << "Extract information --- Done" << std::endl;
 
 	// std::cout << "Create formulas --- Start" << std::endl;
-	// std::cout << "formula_pure" << std::endl;
-	z3::expr_vector formula_pure = smt_planner.encoder_version_pure();
-	// std::cout << "formula_macro" << std::endl;
-	z3::expr_vector formula_macro = smt_planner.encoder_version_macro(0);
-	// std::cout << "formula_dep" << std::endl;
-	z3::expr_vector formula_dep = smt_planner.encoder_version_macro(1);
+
+
+
+
 	// std::cout << "Create formulas --- Done" << std::endl;
 
 	// std::cout << "Export .smt file --- Start" << std::endl;
 	if(check_pure) {
+		// std::cout << "formula_pure" << std::endl;
+		z3::expr_vector formula_pure = smt_planner.encoder_version_pure();
 		if(omt == 0) {
 			// std::cout << "formula_pure" << std::endl;
 			smt_planner.export_and_solve(formula_pure, 0, smt_file_pure, check_pure);
@@ -132,19 +132,31 @@ int main(int argc, char* argv[])
 			smt_planner.export_and_optimize(formula_pure, "rew_", 0, smt_file_pure, check_pure);
 		}
 	} else if(check_macro) {
+		// std::cout << "formula_macro" << std::endl;
+		z3::expr_vector formula_macro = smt_planner.encoder_version_macro(0);
 		if(omt == 0) {
 			smt_planner.export_and_solve(formula_macro, 1, smt_file_macro, check_macro);
 		} else {
 			smt_planner.export_and_optimize(formula_macro, "rew_", 1, smt_file_macro, check_macro);
 		}
 	} else if(check_dep) {
+		// std::cout << "formula_dep" << std::endl;
+		z3::expr_vector formula_dep = smt_planner.encoder_version_macro(1);
 		if(omt == 0) {
 			smt_planner.export_and_solve(formula_dep, 2, smt_file_dep, check_dep);
 		} else {
 			smt_planner.export_and_optimize(formula_dep, "rew_", 2, smt_file_dep, check_dep);
 		}
 	} else {
-		// no checks, just export the formulas
+			// no checks, just export the formulas
+			// std::cout << "Create formulas --- Start" << std::endl;
+			// std::cout << "formula_pure" << std::endl;
+			z3::expr_vector formula_pure = smt_planner.encoder_version_pure();
+			// std::cout << "formula_macro" << std::endl;
+			z3::expr_vector formula_macro = smt_planner.encoder_version_macro(0);
+			// std::cout << "formula_dep" << std::endl;
+			z3::expr_vector formula_dep = smt_planner.encoder_version_macro(1);
+		// std::cout << "Create formulas --- Done" << std::endl;
 		if(omt == 0) {
 			// std::cout << "formula_pure" << std::endl;
 			smt_planner.export_and_solve(formula_pure, 0, smt_file_pure, check_pure);
