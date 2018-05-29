@@ -15,7 +15,7 @@ for ((c=0; c<=3; c++)); do
                     ./smt_export "-g" "input-files/game/game-0$i.txt" "-n" "input-files/navgraph/navgraph-costs-0$i.csv" "-r" "$r" "-c" "$c" "-o" "$o"
                 else
                     ./smt_export "-g" "input-files/game/game-$i.txt" "-n" "input-files/navgraph/navgraph-costs-$i.csv" "-r" "$r" "-c" "$c" "-o" "$o"
-                #fi
+                fi
                 ctr=$((ctr+1))
             done
         done
